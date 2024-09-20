@@ -8566,7 +8566,9 @@ local function C_30()
 			if target then
 				local getT = game:GetService('Players'):GetPlayerFromCharacter(target.Parent)
 				if getT.Team == game:GetService("Players").LocalPlayer.Team then
-
+					if game.PlaceId == 2788229376 or game.PlaceId == 10449761463 then
+						aimAtTarget(target)
+					end
 				else
 					aimAtTarget(target)
 				end
@@ -9602,7 +9604,7 @@ local function C_b3()
 	local RunService = game:GetService("RunService")
 
 	RunService.Heartbeat:Connect(function()
-		local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+		local mouse = game:GetService('Players').LocalPlayer:GetMouse()
 
 		-- Get the screen size to prevent the frame from going off-screen
 		local screenWidth = game:GetService("Workspace").CurrentCamera.ViewportSize.X
