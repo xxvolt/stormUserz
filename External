@@ -8572,7 +8572,7 @@ local function C_30()
 			if target then
 				local getT = game:GetService('Players'):GetPlayerFromCharacter(target.Parent)
 				if getT.Team == game:GetService("Players").LocalPlayer.Team then
-					if game.PlaceId == 2788229376 or game.PlaceId == 10449761463 then
+					if game.PlaceId == 2788229376 or game.PlaceId == 10449761463 or game.PlaceId == 17625359962 then
 						aimAtTarget(target)
 					end
 				else
