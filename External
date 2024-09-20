@@ -1,7 +1,7 @@
 game:GetService("StarterGui"):SetCore("SendNotification", {
 	Title = "My decision",
 	Text = "The chances of shutdowning this are 50%",
-	Duration = 100,
+	Duration = 5,
 })
 
 --[=[
