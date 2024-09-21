@@ -8824,6 +8824,9 @@ local function C_51()
 			TS:Create(script.Parent, TweenInfo.new(0.5), {BackgroundColor3 = ONColor}):Play()
 			SwitchStatus = true
 			NService:SpawnNotification("Basic Bypasser", "Bypass Activated.", 5)
+			if game.PlaceId == 606849621 then
+				game:GetService("Players").LocalPlayer.PlayerScripts.LocalScript:Destroy() --This script poops on jailbreak anticheat
+			end
 		else
 			TS:Create(script.Parent, TweenInfo.new(0.5), {BackgroundColor3 = OFFColor}):Play()
 			SwitchStatus = false
