@@ -15,6 +15,12 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 
 -- Instances: 270 | Scripts: 46 | Modules: 7 | Tags: 0
 local G2L = {};
+local AimAssistGamesList = {
+	2788229376,
+	10449761463,
+	17625359962,
+	9391468976,
+};
 
 -- StarterGui.StormExternal
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
@@ -8572,8 +8578,10 @@ local function C_30()
 			if target then
 				local getT = game:GetService('Players'):GetPlayerFromCharacter(target.Parent)
 				if getT.Team == game:GetService("Players").LocalPlayer.Team then
-					if game.PlaceId == 2788229376 or game.PlaceId == 10449761463 or game.PlaceId == 17625359962 then
-						aimAtTarget(target)
+					for _,v in pairs(AimAssistGamesList) do 
+						if game.PlaceId == v then
+							aimAtTarget(target)
+						end
 					end
 				else
 					aimAtTarget(target)
@@ -8599,16 +8607,26 @@ local function C_37()
 		if SwitchStatus == false then
 			TS:Create(script.Parent, TweenInfo.new(0.5), {BackgroundColor3 = ONColor}):Play()
 			SwitchStatus = true
-			for _,v in pairs(game:GetService("Players"):GetChildren()) do
-				--if v:IsA("Players") and v ~= game:GetService("Players").LocalPlayer then	
-				--end
+			game["Run Service"].Heartbeat:Connect(function()
+				if SwitchStatus == true then
+					for _,v in pairs(game:GetService("Players"):GetChildren()) do
+						--if v:IsA("Players") and v ~= game:GetService("Players").LocalPlayer then	
+						--end
 
-				local NameUI = script.Parent.Parent.Parent.Parent.Parent.Parent.NUI:Clone()
-				NameUI.Parent = v.Character["Head"]
-				NameUI.NameLabel.Text = v.Name
-				NameUI.Enabled = true
-				NameUI.NameLabel.TextSize = true
-			end
+						if v.Character["Head"]:FindFirstChild("NUI") then
+							
+						else
+							local NameUI = script.Parent.Parent.Parent.Parent.Parent.Parent.NUI:Clone()
+							NameUI.Parent = v.Character["Head"]
+							NameUI.NameLabel.Text = v.Name
+							NameUI.Enabled = true
+							NameUI.NameLabel.TextSize = true
+						end
+
+
+					end
+				end
+			end)
 		else
 			TS:Create(script.Parent, TweenInfo.new(0.5), {BackgroundColor3 = OFFColor}):Play()
 			for _,v in pairs(game:GetService("Players"):GetChildren()) do
